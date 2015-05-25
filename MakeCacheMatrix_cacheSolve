@@ -1,0 +1,39 @@
+
+#Create A new R object that can cache its inverse...see object provided in instructuions
+MakeCacheMatrix <- function(x = matrix()) {
+  #set x to NULL for first iteration
+  y <- NULL
+  #create matric setup
+  set <- function(matrix) {
+    x <<- matrix()
+    y <<- NULL
+  }
+  get <- function() { 
+        ##Return the matrix
+             x
+  setmatrix <- function(matrix) x <<- matrix()
+  getmatrix <- function() x
+  list(set = set, get = get,
+       setmatrix = setmatrix,
+       getmatrix = getmatrix)
+}
+  }
+
+
+##Use the 'Solve' function to calculate the inverse
+cacheSolve <- function(x, ...) {
+  #get the inverse matrix returned
+  m <- x$getInverse()
+  #return the current matrix called if it already an inverse
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  #get the matrix object
+  data <- x$get()
+  #formatting the inverse matrix
+  m <- solve(data, ...)
+  #Setting the inverse matrix
+  x$setInverse(m)
+  #return the inverse matix
+  m
